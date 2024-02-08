@@ -216,7 +216,7 @@ Strategy choices were analyzed using generalized linear mixed-effect regression 
 
 \subsubsection{Sensitivity to feedback}
 
-To learn how skiers and coaches used their feedback to guide their choices, we performed a win-stay/lose-shift model (WSLS). For this WSLS analysis, we z-scored the race times for each skier for free choice 1 and 2 and counted \(y_{ijk}=1\) when the skier repeated the previous strategy and 0 when it was not. The data was modeled using a generalized linear mixed-effect regression model with a binomial logit-link function, with treatment and the race time (z-transformed) and their interaction as the two variables. To test for differences in error sensitivity, we used the marginal effects at the mean (MEM) derived from the emmeans package \cite{lenth_emmeans_2023}.
+To learn how skiers and coaches used their feedback to guide their choices, we performed a 'win-stay, lose-switch' (WSLS; \cite{}) analysis (. For this WSLS analysis, we z-scored the race times for each skier for free choice 1 and 2 and counted \(y_{ijk}=1\) when the skier repeated the previous strategy and 0 when it was not. The data was modeled using a generalized linear mixed-effect regression model with a binomial logit-link function, with treatment and the race time (z-transformed) and their interaction as the two variables. To test for differences in error sensitivity, we used the marginal effects at the mean (MEM) derived from the emmeans package \cite{lenth_emmeans_2023}.
 
 
 
