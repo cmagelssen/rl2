@@ -1,6 +1,13 @@
 \documentclass{article}
+
+
 \usepackage{graphicx} % Required for inserting images
 \usepackage{biblatex} %Imports biblatex package
+\usepackage{longtable}
+\usepackage{rotating} % Required for sideways table
+
+
+
 \addbibresource{references.bib} %Import the bibliography file
 
 
@@ -28,19 +35,21 @@ We found that the reinforcement learning group showed greater improvement during
 
 
 
-\begin{figure}[h!]
+\begin{figure}[ht]
 \centering
 \includegraphics{figures/figure_method_courseandstrategy.pdf}
 \caption{\textbf{a.} Illustrations of the two slalom courses used in the study. The main slalom course was a rhythmic course deployed in all sessions except for the transfer test. The course setting for the transfer test involved a progression in gate offset, starting with the largest offset and ending with the smallest offset. \textbf{b.} Illustration of the strategies defined to enhance racing performance on flat terrain in slalom: The "stand against" strategy emphasized maintaining a stable stance against external forces without body extension along the body's longitudinal axis or rocking skis forward; 'Rock skis forward' involved rocking skis forward from gate passage to completion of the turn; The "extend" strategy involves extending the body from a laterally tilted position during the turn, closer to the turn's center of rotation; The "extend with rocking skis forward" was expected to be the best strategy combining the two effects from extending and rocking skis forward, and we therefore defined this as the theoretical best strategy}
 \label{fig:courseandstrategies}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[ht]
 \centering
 \includegraphics{figures/figure_method_experiment.pdf}
 \caption{Illustration of the experimental design and procedure. \textbf{a.} Timeline of the three-day skill learning experiment. During the baseline, skiers skied a slalom course as fast as they could without receiving racing time feedback. The skiers' performances were ranked to form blocks. Within each block, skiers were randomly assigned to one of three treatment groups (see b).Skiers underwent an acquisition phase in their designated treatment group comprising one forced exploration and two free-choice sessions. On the last day, skiers completed a retention and transfer test, again without feedback from coaches nor timing. \textbf{b.} Illustration of treatment groups in the study. Supervised (target skill) involved coaches consistently choosing the theoretically best strategy, while supervised (free choice) allowed coaches to select strategies freely. Skiers in both these treatment groups received feedback on strategy execution from their respective coach, while skiers in the reinforcement learning group independently selected strategies and received feedback from the timing system to facilitate value learning of each strategy. }
 \label{fig:experiment}
 \end{figure}
+
+
 
 
 
@@ -73,8 +82,188 @@ Our study suggests that reinforcement learning can be an essential training stra
 \section{Methods}
 
 \subsection{Participants}
-We recruited ten alpine ski teams from Norway and Sweden, comprising
-\input{descriptives/descriptive_skier_n}alpine ski racers (age \textit{M} = \input{descriptives/descriptive_skier_age_mean}, \textit{SD }= \input{descriptives/descriptive_skier_age_sd};  \input{descriptives/descriptive_skier_n_female} female,  \input{descriptives/descriptive_skier_n_male} male). Two skiers were excluded from the analysis due to an injury prior to the study (\textit{n}=1) and sickness during the study (\textit{n}=1), leaving us with a total of 96 skiers completed the entire åstudy and were included for the analysis. We deliberately opted to recruit skiers with diverse skill levels for the study to augment the generalizability of our findings. However, to ensure a sufficient skill level to handle the specific icy snow conditions prepared in the skiing hall, we only recruited skiers aged 15 and older. Among the ski groups that were tested were five ski academies, three senior development teams, and two national ski teams. These skiers were generally highly skilled, with a median world rank of 605, but there was also considerable variability, as indicated by a substantial interquartile range (Q1 = \input{descriptives/descriptive_ranking_male_Q1}, Q3 = \input{descriptives/descriptive_ranking_male_Q3}). A smaller subset of the participants (n = 13) was not world-ranked, as they had yet to record FIS points. Table 1 provides demographic information for each treatment group.
+We recruited ten alpine ski teams from Norway and Sweden comprising 98 alpine ski racers (age M = 18.1 years, SD= 2; 40 females, 58 males). Two skiers were excluded from the analysis due to an injury prior to the study (n=1) or sickness during the study (n=1); thus, a total of 96 skiers completed the entire study and were included in the analysis. We deliberately opted to recruit skiers with diverse skill levels for the study to augment the generalizability of our findings. However, to ensure a sufficient skill level to handle the specific icy snow conditions prepared in the skiing hall, we recruited only skiers aged 15 and older. Among the ski groups tested were five ski academies, three senior development teams, and two national ski teams. These skiers were generally highly skilled, with a median world rank of 605, but there was also considerable variability, as indicated by a substantial interquartile range (Q1 = 248, Q3 = 1390.5). A smaller subset of the participants (n = 13) was not world-ranked, as they had yet to record FIS points. Table 1 provides demographic information for each treatment group.
+
+Conducting studies on alpine ski racing poses challenges related to environmental control and resource constraints. Our sample size approach involved recruiting as many skiers as possible during the summer of 2023, with a set minimum sample size of 80 skiers, which we deemed appropriate for this context. Prior to data collection, data and power simulations for sample sizes of 80, 100, and 120 skiers were conducted, revealing simulated powers of 0.60, 0.75, and 0.80, respectively, for the smallest effect size of interest (0.3 second difference between groups) (\url{https://osf.io/c4t28}). The smallest effect size of interest was based on our knowledge of alpine skiing and discussions with coaches, but it was intended for a 50-meter longer course and more training sessions than we ultimately ended up using due to practical considerations. The sample size justification, task design, and analysis plan were preregistered before data collection (\url{https://osf.io/tfb2w}).
+
+Due to space and time constraints in the ski hall, it was not possible to test all the ski teams simultaneously. The 10 ski teams were therefore divided into 4 groups for which the study was conducted at different times. For each group that participated in the study, we recruited two coaches from the ski teams to serve as coaches in the supervised (free choice) learning group, totaling 8 coaches (2 women; 6 men). These coaches had extensive coaching experience in coaching alpine ski racers. In addition, for each group of ski teams that completed the experiment together, we recruited a third coach to coach the skiers in supervised (target skill) learning. To ensure that these coaches had sufficient credibility to make the skiers buy into our theoretical best strategy, we selectively recruited three highly experienced coaches from the Norwegian alpine ski team, with one coach serving twice due to illness of the fourth coach. Importantly, all the coaches remained unaware of the experimental manipulation. Table 2 provides demographic information of the coaches. All the skiers and coaches provided informed consent before the study. The study was approved by the Human Research Ethics Committee of The Norwegian School of Sport Sciences.
+
+
+
+\begin{sidewaystable}
+\caption{\textbf{Skier characteristics}}
+\centering
+\begin{tabular}[t]{l|c|c|c|c|c|c}
+\hline
+\multicolumn{1}{c|}{ } & \multicolumn{2}{c|}{\textbf{Reinforcement learning}} & \multicolumn{2}{c|}{\textbf{Supervised (free choice)}} & \multicolumn{2}{c}{\textbf{Supervised (target skill)}} \\
+\textbf{Sex} & \textbf{F}, N = 13 & \textbf{M}, N = 19 & \textbf{F}, N = 14 & \textbf{M}, N = 19 & \textbf{F}, N = 13 & \textbf{M}, N = 20\\
+\hline
+Age & 18.4 (2.3) & 17.7 (1.8) & 18.1 (2.3) & 18.3 (1.8) & 17.8 (2.4) & 18.2 (2.1)\\
+\hline
+Training group &  &  &  &  &  & \\
+\hline
+\hspace{1em}National team & 1 (7.7\%) & 1 (5.3\%) & 2 (14\%) & 1 (5.3\%) & 2 (15\%) & 4 (20\%)\\
+\hline
+\hspace{1em}Senior team & 3 (23\%) & 5 (26\%) & 1 (7.1\%) & 5 (26\%) & 0 (0\%) & 5 (25\%)\\
+\hline
+\hspace{1em}Ski academy & 9 (69\%) & 13 (68\%) & 11 (79\%) & 13 (68\%) & 11 (85\%) & 11 (55\%)\\
+\hline
+FIS points &  &  &  &  &  & \\
+\hline
+\hspace{1em}Median (IQR) & 54 (42, 80) & 46 (34, 90) & 58 (26, 80) & 44 (35, 61) & 49 (28, 66) & 31 (28, 63)\\
+\hline
+\hspace{1em}Not recorded & 3 & 2 & 1 & 2 & 2 & \vphantom{1} 3\\
+\hline
+World ranking &  &  &  &  &  & \\
+\hline
+\hspace{1em}Median (IQR) & 630 (394, 1,217) & 707 (364, 2,317) & 709 (133, 1,224) & 662 (387, 1,274) & 527 (145, 882) & 314 (220, 1,360)\\
+\hline
+\hspace{1em}Not recorded & 3 & 2 & 1 & 2 & 2 & 3\\
+\hline
+\multicolumn{7}{l}{\rule{0pt}{1em}\textsuperscript{1} Mean (SD); n (\%)}\\
+\end{tabular}
+\end{sidewaystable}
+
+
+\begin{sidewaystable}
+\caption{\textbf{Coach characteristics}}
+\centering
+\begin{tabular}[t]{l|c|c|c}
+\hline
+\multicolumn{1}{c|}{ } & \multicolumn{2}{c|}{\textbf{Supervised (free choice)}} & \multicolumn{1}{c}{\textbf{Supervised (target skill)}} \\
+\textbf{Characteristic} & \textbf{F}, N = 2 & \textbf{M}, N = 6 & \textbf{M}, N = 3\\
+\hline
+Age & 38.5 (3.5) & 44.3 (8.8) & 48.0 (7.0)\\
+\hline
+Ski education (highest achieved) &  &  & \\
+\hline
+\hspace{1em}Level 2 & 0 (0\%) & 1 (17\%) & \\
+\hline
+\hspace{1em}Level 3/4 & 2 (100\%) & 5 (83\%) & 3 (100\%)\\
+\hline
+Sport science degree (highest achieved) &  &  & \\
+\hline
+\hspace{1em}MSc & 1 (50\%) & 0 (0\%) & 1 (33\%)\\
+\hline
+\hspace{1em}BSc & 1 (50\%) & 1 (17\%) & 1 (33\%)\\
+\hline
+\hspace{1em}No & 0 (0\%) & 4 (67\%) & \\
+\hline
+\hspace{1em}One-year program & 0 (0\%) & 1 (17\%) & 1 (33\%)\\
+\hline
+Coaching experience (years) &  &  & \\
+\hline
+\hspace{1em}National team (WC/EC)/Senior teams & 5.00 (1.41) & 5.00 (4.24) & 15.67 (1.15)\\
+\hline
+\hspace{1em}Ski academy & 7.5 (3.5) & 7.5 (6.5) & 2.00 (3.46)\\
+\hline
+\hspace{1em}Ski club & 2.5 (3.5) & 6.5 (8.7) & 6.0 (6.6)\\
+\hline
+\multicolumn{4}{l}{\rule{0pt}{1em}\textsuperscript{1} Mean (SD); n (\%)}\\
+\end{tabular}
+\end{sidewaystable} 
+
+
+\subsection{The setup}
+The experiment was conducted in the indoor ski hall SNØ in Oslo, Norway (\url{https://snooslo.no/}). In this hall, we used a 210-meter-long flat section of the race hill, which we water-injected before testing each group of skiers to ensure uniform and fair snow conditions for all participants. For additional preparation details and images, please refer to Supplementary A. With our chosen course setup, this 210-meter-long flat section allowed space for 19 slalom gates. We sat two types of slalom courses in the experiment (Figure \ref{fig:design}a). The main slalom course was used in all sessions, except during the transfer test, and featured a 10 m distance and a 1.9 m offset. The course distance aligned with our previous study \cite{magelssen_is_2022}, but we opted for a slightly larger offset to better suit the skill level of our skiers. The transfer test aimed to evaluate how skiers transferred their learning to a slalom course that resembled a typical alpine ski racing course. To assess this, we set a course with a progression in gate offset, starting with five gates set at a 2.2-meter offset, followed by seven gates at a 1.7-meter offset, and concluding with seven gates at a 1.2-meter offset. Although we did not expect radical differences in strategy effects, we anticipated a greater emphasis on rocking the skis forward in gates with a 2.2-meter offset than in those with a 1.2-meter offset to enhance turn exit release. Both courses were set with stubbies (short gates) instead of long gates to minimize energy dissipation upon hitting the gate \cite{minetti_biomechanics_2018} and provide the skiers with space and freedom to execute the strategies. In addition, this approach helped us avoid creating holes in the course, which can occur when the long gate is forcefully slammed into the ground.
+
+ The start gate was positioned 20 meters before the first gate. Skiers were required to start in a static position to ensure consistency in the starts, with their binding front head placed behind the starting gate. The skiers started by putting their skis in parallel and lifting up the poles without using poling or skating for propulsion. For an illustration of the starting procedure and setup, see Supplement Video. We recorded the times using a wireless photocell timing system (HC Timing wiNode and wiTimer; Oslo, Norway). Timing started when the skier crossed the first photocell pair situated 10 meters below the starting gate. To minimize wear and tear on the course, we set two parallel and identical courses and routinely shifted between them.
+ 
+\subsection{Experimental design}
+We employed a between-subjects design and posed the learning question of discovering effective strategies as an \textit{n}-armed bandit problem \cite{sutton_reinforcement_2018}. The essence of this problem is that a learner repeatedly tries different options and observes their outcomes to learn which strategy is the best and, therefore, which one to choose. Finding the best strategy requires a delicate balance between exploiting the strategy known to yield the best payoff and exploring alternative strategies that may offer superior benefits. In our study, the options consisted of four strategies that skiers could employ to improve their race times on flat slopes in slalom, grounded in physics-based coaching manuals for alpine ski racing \cite{lemaster_skiers_1999, lemaster_ultimate_2010, lind_physics_2013}, biomechanical research on elite skiers \cite{reid_kinematic_2010, tjorhom_beskrivelse_2007, reid_alpine_2020, magelssen_is_2022}  or common strategy used by coaches. The four strategies were named "stand against", "rock skis forward", "extend", and "extend with rock skis forward". (Figure 1\ref{fig:courseandstrategies}b for a strategy illustration and \ref{sup_strategies} for an extended explanation)
+
+To study how instruction and feedback drive learning of strategy selection, we designed and allocated skiers to three treatment groups that allowed us to compared reinforcement learning with traditional supervised learning with a coach:
+
+For the supervised (target skill) learning group, we provided the best possible training program by engaging highly experienced and meritorious coaches who explained to the skiers that the 'extend with rock skis forward' strategy was the most effective for skiing fast on flat terrain in slalom. They imparted this information, citing a previous doctoral project \cite{reid_kinematic_2010}, which revealed that the fastest slalom racers spent more time aft of the skis, emphasizing the involvement of a dynamic rocking movement. In addition, the coaches informed them that simulations of ski racers had yielded similar results \cite{mote_accelerations_1983, lind_physics_2013}. The coach then guided the skiers to adopt this strategy and provided feedback on its execution after each trial. Note that the coach had access to the skiers' times after each trial but were prohibited from sharing this information with the skiers.
+
+In the supervised (free choice) learning group, skiers were assigned to two coaches recruited from the tested ski group. We recruited two coaches to minimize waiting time and thus enhance training efficiency. To balance the skiers' skill levels within the treatment group, we created new blocks from the ranked list from baseline testing and randomly assigned them to the coaches. We instructed the coaches to improve the skiers' racing times as much as possible using all four defined skiing strategies. During each trial, the coach would select a strategy for the skier, observe the skier during his trial and provide feedback on its execution afterward. Similar to the supervised (target skill) learning group, the coaches had access to the skiers' times after each trial but could not share this information with the skiers.
+
+In contrast, the reinforcement learning group was not assigned any coach. Instead of having a coach deciding the skiing strategy for them, the skiers in this treatment group were told to choose a strategy for each trial by themselves to ski the course as fast as possible. To help the skiers choose and learn from their choice and skiing execution, this group could see their racing times immediately after they crossed the finish line. Although this group had no coach, we assigned a person to communicate with the skiers to record their choices and encourage them to try skiing fast, also to equalize out some of the motivational effect of having a coach in the other treatment groups. 
+
+\subsection{Procedures}\label{subsec4}
+Figure \ref{fig:experiment}a illustrates the procedures employed in the study. 
+In the baseline test, skiers began with two warm-up runs: one in free skiing warm-up course and one specific warm-up in the slalom course. During these warm-up runs, skiers were instructed, trained and verified on the start procedure and start technique by an instructor. As a first run in the baseline assessment, skiers completed a straight-gliding run, where they skied straight down from start to finish in a static, upright slalom posture. Subsequently, the skiers completed four runs in the slalom course. Skiers were encouraged to ski as quickly as they could, but they could not see their times, nor did they get any instruction on how to perform well. 
+
+After the initial baseline assessment, the skiers took a 60-minute break. In the meantime, we allocated the skiers to the three treatment groups: reinforcement learning, supervised learning (target skill), and supervised learning (free choice). To allocate the skiers to groups, we deployed a randomized-blocked approach to account for pre-existing differences in the skiers’ performance levels \cite{maxwell_designing_2017}. Specifically, we computed each skier’s average performance across the four trials in the baseline and ranked them accordingly. We then created \textit{n} blocks with block sizes corresponding to our three treatments for the entire list of skiers and assigned these skiers to these predefined blocks. Finally, we randomly allocated the skiers to the different treatment groups within each block (Figure \ref{fig:experiment}b).
+
+The treatment groups participated in sessions at different times to prevent treatment diffusion \cite{maxwell_designing_2017}. As the ski group comprised teams of skiers who know each other well and were residing together, we explicitly emphasized the importance of keeping information about the sessions private. To stay within the time frame at the ski hall, the two supervised learning groups underwent training together. To facilitate this, we arranged stations in the finish area with space and vision dividers and ample space to impede communication between coaches in the supervised learning groups. In addition, we developed a Python script that fetched racing times from the timing system, filtered the times for each coach, and transmitted it to the station where the coach was located, ensuring no information flow between coaches. The treatment group that initiated after the baseline session was randomized and counterbalanced across the group of ski teams we tested.
+
+The first session after the treatment assignment involved a forced exploration. Here, skiers within the treatment group were gathered, and the session started by introducing them to the strategies. We explained that we had identified four strategies to enhance racing times on flats in slalom. Subsequently, each strategy was detailed, supported by illustrative drawings in \ref{fig:courseandstrategies}b Figure and corresponding word explanations as outlined in the \ref{subsec4}. To confirm comprehension, we conducted two short familiarization trials for each strategy, or until the execution met our performance standards. After reviewing the strategies with the participants, we gathered them in their respective treatment groups and asked them to rank the strategies online for what they believe are most to least suitable to improve performance in flat terrain slalom skiing. Throughout the instruction and ranking process, skiers were explicitly instructed not to discuss the strategies with each other. It is important to note that the same instructor was used for all treatment groups within a tested ski group. After this, the skiers conducted a total of eight trials on the course, with two trials for each strategy. During these trials, the reinforcement learning group got feedback from the timing whereas the coach gave feedback in the supervised learning. After completing the eight rounds, the skiers re-evaluated and ranked the strategies.
+
+On the second day, skiers completed two free-choice sessions, each comprising a total of 6 trials in the same slalom courses that were used the baseline testing the day before. Prior to the 6 free - choice trials, the skiers performed one warm-up free skiing run and one warm-up run in the slalom course. In these sessions, supervised (target skill) learning consistently selected the theoretically best skiing strategy. Conversely, in supervised (free choice) and reinforcement learning, the coach and the skiers, respectively, had the autonomy to choose skiing strategy for each run. After each session, coaches (except supervised target skill) and skiers were asked to re-evaluate and rank the strategies.
+
+On the third and last day, the skiers performed a retention and a transfer test to assess the effect of the training approaches on learning and performance. The retention test was performed in the same course as the baseline and acquisition sessions, whereas the transfer test was performed in the transfer course and involved a progression in gate offset from start to finish. Since the transfer test was a new course, we allowed the skiers to inspect the course before the test. The retention and transfer tests were conducted with all treatment groups together. None of the treatment groups received any feedback from coaches nor time during these tests. After each test, the skiers were asked to rank the strategies. 
+
+\subsection{Analysis}
+
+After the data were collected, the chosen strategies of skiers or coaches were manually inputted into the database. The resulting dataset, which included raw racing times and strategy choices, was downloaded as separate CSV files and stored in the 'data' folder. These files were subsequently imported into R (v4.2.2, 2022) and processed using custom functions built upon the base R and tidyverse packages . Information logged during the experiment, such as when skiers did not complete the course ('Did Not Finish'), was then added to the relevant trials in the dataset. After this, the data underwent a cleaning process, during which trials with implausible high or low racing times were detected and replaced with “not a number” (NaN). Instances where the timing system failed to start were manually added as trials with NA values, along with corresponding strategy information. Finally, the data underwent extensive validation, including trial counting and visual inspection of the racing times for errors. The validated dataset was saved as a new CSV file. An extensive report can be found at OSF (link when it is uploaded).
+
+
+
+ 
+\section{Supplementary}
+
+
+
+
+\subsection{Description of strategies}\label{sup_strategies}
+This supplementary describes each strategy in more detail. 
+
+The "stand against" strategy emphasized maintaining a stable stance against external forces without body extension along the body's longitudinal axis or rocking skis forward. This term is frequently used by Norwegian ski coaches when communicating with skiers to help them improve their race times. 
+
+The "rock skis forward" strategy involves rocking the ski forward during the turning phase. This action effectively regulates the distribution of pressure over the skis. During the initiation and control phases of a turn, the pressure is generally shifted forward to bend the ski's forebody, increasing friction with the snow and enabling it to turn more sharply. However, at some point, during turn progression, the skier aims to stop turning and therefore shifts the pressure further back on the skis, thereby reducing turning and braking forces \cite{lemaster_skiers_1999, lemaster_ultimate_2010}. Investigations of elite alpine ski racers have shown that high performing skiers tend to rock skis more forward and pressure the back part of the ski for considerable longer time during a turn, than slower skiers \cite{reid_kinematic_2010, tjorhom_beskrivelse_2007, reid_alpine_2020}. To make the information more specific for the skiers, we communicated, that the maximum range of the rocking movement was about 30-50 centimeters from gate passage to completion of the turn, which is in correspondence with biomechanical evidence of elite ski racers \cite{reid_kinematic_2010}. 
+
+The "extend" strategy involves extending the body from a laterally tilted position during the turn, closer to the turn's center of rotation. This pushing motion leads to more proper handling of a reservoir of energy available when skiers lower their bodies in the switch between turns. When skiers extend their bodies, while being laterally inclined in the slalom turn, they create ground reaction force. The radial component of the ground reaction force moving the center of mass closer to the center of rotation increases velocity, in accord with the principle of mechanical energy conservation \cite{lind_physics_2013}. Simulation studies of individuals extending their body in rollers or during carved slalom turns have shown that this movement can increase speed \cite{mote_accelerations_1983,luginbuhl_identification_2023}, and the effect has been observed in various ways with elite skiers during training and competition \cite{reid_kinematic_2010, magelssen_is_2022, supej_differential_2008}. 
+
+Finally, "extend with rocking skis forward" was expected to be the best strategy combining the two effects from extending and rocking skis forward, and we therefore defined this as the theoretical best strategy. Simulations of skiers extending their bodies in the bottom of a roller have observed an additional effect of rocking the skis forward \cite{mote_accelerations_1983}
+
+
+
+\subsection{Snow preparation}\label{sup_snowprep}
+We dedicated a substantial amount of time and effort to prepare the hill for our learning experiment. Our primary objective was to ensure that the snow conditions were as identical and fair as possible for all participants. To achieve this, we collaborated closely with the SNØ facility’s staff and the coaches of the Norwegian Alpine Ski team. Together, we devised a comprehensive plan to achieve consistency before each group of skiers took to the slopes. This report will detail the steps we took to ensure the snow was ready for our skiers and provide insight into the reasoning behind our choices. The purpose of this supplementary note is to assist you in evaluating our study and to transparently document our commitment to delivering the best possible conditions for our skiers.
+
+\subsubsection*{Ski group A}
+About two weeks before testing Group A, new snow was created on the racing hill. The evening before data collection, machines groomed the racing hill (Fig. \ref{fig:snowprep}a:left). We then watered the hill and left it to freeze overnight to create a hard and firm surface (Fig. \ref{fig:snowprep}a:right). 
+
+\subsubsection*{Ski group B}
+Ski group B began testing the day after ski group A completed their testing. Once group A finished, we inspected the race hill(Fig. \ref{fig:snowprep}b:left), noticed some small holes, and decided to fill them before watering it again (Fig. \ref{fig:snowprep}b:right).  
+
+\subsubsection*{Ski group C}
+After ski group B, the race hill started getting icy, lacking grip in some areas. We were concerned that watering it again might worsen conditions, making it too challenging for skiers. Consequently, we opted to gently groom the hill with a machine and let the grooves set for a couple of days. See figure \ref{fig:snowprep}c for the result of this process.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{figures/figure_appendix_snowprep.jpg}
+\caption{Images showing the hill preparation for the four ski groups. \textbf{a}. Shows the racing hill for ski group A. The left image displays the racing hill the evening before data collection after it was groomed. The right image shows the watering process for ski group A. \textbf{b}. Shows the racing hill for ski group B. The left image depicts the course inspection immediately after ski group A finished their testing. The right image shows the watering process for ski group B. Note that we did not groom the course this time, so in the image, you can see some uneven surfaces on the snow, which were evened out by watering it. \textbf{c}. Shows the racing hill for ski group C. The left image displays the hill after it was groomed and left overnight. The right image shows the same but from the bottom. \textbf{d}. Shows the racing hill for ski group D. The left image illustrates the hill for ski group C on their retention test. Note the icy surface, which was the reason why we produced new snow. The right image shows the watering process for ski group D. 
+}
+\label{fig:snowprep}
+\end{figure}
+ 
+\subsubsection*{Ski group D}
+After Ski Group C, the race hill needed new snow because some areas had become icy, with minimal grip (Fig. ref{fig:snowprep}d:left)). Although the conditions were suitable for Ski Group C, they would not have worked for a new ski group undergoing testing. Consequently, we decided to produce new snow two days before Ski Group D started their training. This fresh snow was pushed into the racing hill the day before testing and groomed. Subsequently, we watered the hill and let it freeze overnight (Fig. \ref{fig:snowprep}d:right)
+
+
+\subsection{Course setting}\label{secA2}
+We used a standard procedure to set the slalom courses, ensuring a fixed length and offset. First, we stretched a taut rope between two nails on either side of the ski hill. This rope helped us locate the exact starting line consistently from day to day. From the nail on the skier's right, we measured 6 meters into the slope. We did the same from a fixed point approximately 50 meters down the course, but here we measured 3.4 meters out. Then, we pulled a 50-meter-long measuring tape between the two points to establish the line down the hill   We chose a measuring tape over a rope because ropes tend to expand and contract when they get wet and dry, respectively (see Fig.\ref{fig:coursesetting}a for an image illustrating this process).
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{figures/figure_appendix_coursesetting.jpg}
+\caption{Images showing the procedure for course setting. \textbf{a}. The image illustrates the process of establishing the straight reference line down the hill. The long blue gate is positioned 6 meters from the nail on the skier's right. \textbf{b}. This image showcases the gate-setting method. A white rope is secured to the reference line with a carabiner hook, and a marker on the rope indicates a distance of 1.9 meters for placing the gate. \textbf{c}. The image reveals the tracks left behind by a group of skiers that was tested
+}
+\label{fig:coursesetting}
+\end{figure}
+ 
+
+Once the 50-meter straight line was established, we laid out a rope segment attached to a carabiner hooked onto the long rope. We moved this segment 1.9 meters out from the rope in one turn and 0 meters in the other, with a 10-meter vertical space. This ensured that the course followed a straight line down the slope and was set with the correct offset (see figure\ref{fig:coursesetting}b for an image illustrating this process). Once all the gates along the 50-meter measurement tape were set, we used a new fixation point down the slope and continued down the course. We practiced this procedure several times before the experiment, and the variation in course setting was a maximum of 10 cm at the end of the course.
+
+Due to wear and tear on the trails, we opted to shift the course laterally or rotate it, depending on the situation. With the exception of one skiing group, we followed the following practice. On day 1, we set the course as described above. On day 2, we rotated the course so that the first turn went in the opposite direction of day 1. On the third day, we shifted the course closer to the wall on skiers' right (see figure \ref{fig:coursesetting}c for an image showing the tracks in the hill left after a skigroup had completed the experiment). 
+
+
+
+
+
+
 
 
 
