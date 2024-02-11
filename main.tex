@@ -50,13 +50,13 @@ We asked, instead, if a training based on reinforcement learning can improve act
 
 \section{Introduction}
 
-Learning to make good strategy selections is the hallmark of expertise to overcome plateaus and secure continuous skill improvement  \cite{wolpert_principles_2011, krakauer_motor_2019, mangalam_investigating_2023, du_relationship_2022, gallivan_decision-making_2018}. The strategies are typically trained with instruction-based approaches, where a coach tells learners what to do (e.g., take a shorter line around the gate) followed by corrective feedback (e.g., you can shorten the line even more) \cite{williams_practice_2005, williams_effective_2023, hodges_role_1999}. This teaching strategy can be likened to what motor learning refers to as supervised learning, where the teaching signal for skill improvement represents the disparity between the desired skill outcome and the learner outcome \cite{jordan_forward_1992, wolpert_motor_2010, doya_complementary_2000}. Through practice this teaching signal can bring the learner closer to execute what is assumed to be the correct choice. But does this teaching approach truly foster creativity and intelligent strategic choices, such as helping learners discover innovative and vastly more effective solutions that surpass our imagination?
+Learning to make good strategy choices is the hallmark of expertise to overcome plateaus and unleashing learners' potential  \cite{wolpert_principles_2011, krakauer_motor_2019, mangalam_investigating_2023, du_relationship_2022, gallivan_decision-making_2018}. These strategies are typically trained with instruction-based approaches, where a coach tells learners what to do (e.g., take a shorter line around the gate) followed by corrective feedback (e.g., you can shorten the line even more) \cite{williams_practice_2005, williams_effective_2023, hodges_role_1999}. This teaching strategy can be likened to what motor learning refers to as supervised learning, where the teaching signal for skill improvement represents the disparity between the desired skill outcome and the learner outcome \cite{jordan_forward_1992, wolpert_motor_2010, doya_complementary_2000}. Through practice this teaching signal can bring the learner closer to execute what is assumed to be the correct choice. But does this teaching approach truly foster creativity and intelligent strategic choices, such as helping learners discover innovative and vastly more effective solutions that surpass our imagination?
 
 One drawback of the supervised learning strategy for training these decisions is that learners are simply told what to do based on what coaches believe to be a good strategy from their knowledge and experience. However, what coaches judge as a good strategy does not always align with reality, even for the best-trained eye \cite{supej_impact_2019, cochrum_visual_2021}. Learners might, therefore, miss opportunities to discover the best strategy when coaches opt for suboptimal strategies \cite{gray_plateaus_2017}. Supervised learning might also constrain learners to adopting a single ('universal') strategy for all situations rather than acquiring a repertoire of strategies and discerning the most effective strategies for each specific scenario. Finally, it remains uncertain whether the prescriptive approach is the most effective teaching strategy for achieving long-lasting learning effects \cite{wulf_instructions_1997} 
 
 Learning to choose good strategies can also happen without the direct influence of a coach providing advice. The cornerstone of reinforcement learning \cite{sutton_reinforcement_2018} is that learners can learn by exploring strategies and evaluating their outcomes, using the successes and failures of outcomes as teaching signals. That is, rather than being told the putatively correct solution to the problem, as in supervised learning, they learn the value of different strategies, which allows them to finally pick the best solution. Specifically, these values are learned by comparing a given choice's outcomes with the currently expected outcome of that choice. Outcomes that exceed or fall short of expectations result in errors in reward prediction, signaling that the learner must update their predictions to better anticipate future rewards following that action \cite{rescorla_theory_1972}. These reward prediction errors are then incorporated to form a new and better estimate of reward, by updating expectations through a weighted running average. Reinforcement learning has been tremendously powerful in explaining human and animal learning \cite{waelti_dopamine_2001, schultz_neural_1997, pessiglione_dopamine-dependent_2006}, as well as training AI to perform complex tasks such as computer games starting from pixel inputs, only\cite{mnih_human-level_2015}. Given this evidence, could reinforcement learning offer an alternative to standard coach-based supervised learning to improve strategy selection and performance for skilled performers?
 
-A fundamental basis of developing expertise is that it is not about sticking to an acceptably good strategy that is sufficiently good for example to solve  everyday tasks. Instead, expertise refers to optimal or close to optimal task solutions and hence requires consistently seeking new and better methods, which is a defining characteristic of deliberate practice \cite{ericsson_development_2003, ericsson_expert_1994, ericsson_role_1993}. Sometimes, this pursuit demands dramatic shifts in strategy choices \cite{taylor_cerebellar_2014, taylor_role_2012, gray_plateaus_2017}, requiring learners to step outside of automated  performance to enter a deliberate mode of action selection\cite{du_relationship_2022}.  In this mode the learner reorganizes their mental representation of the skill to develop even better strategies to support their performance \cite{du_relationship_2022}. How learners decide on, learn, and develop strategies is not currently known\cite{taylor_role_2012, taylor_cerebellar_2014, chen_effects_2018} and is not particular to skilled performers. Our question was whether reinforcement learning could contribute to better strategy selection than traditional supervised learning by allowing learners to experiment with strategies and evaluate their effects. 
+A fundamental distinction in developing expertise compared to everyday skills is that it is not about learning to use an acceptably good strategy and sticking to it. Instead, expertise development concerns constantly seeking new and better methods, which is a defining characteristic of deliberate practice \cite{ericsson_development_2003, ericsson_expert_1994, ericsson_role_1993}. Sometimes, this pursuit demands dramatic shifts in strategy choices \cite{taylor_cerebellar_2014, taylor_role_2012, gray_plateaus_2017}, requiring learners to step outside of automated  performance to enter a deliberate mode of action selection\cite{du_relationship_2022}.  In this mode the learner reorganizes their mental representation of the skill to develop even better strategies to support their performance \cite{du_relationship_2022}. How learners decide on, learn, and develop strategies is not currently known\cite{taylor_role_2012, taylor_cerebellar_2014, chen_effects_2018} and is not particular to skilled performers. Our question was whether reinforcement learning could contribute to better strategy selection than traditional supervised learning by allowing learners to experiment with strategies and evaluate their effects. 
 
 To address this question, we conducted a three-day learning experiment with ninety-eight skilled and elite alpine ski racers from Norway and Sweden. To facilitate skill development in this skilled group of athletes, we selected a section of a slalom course where there is great improvement potential, even among the best skiers. This skill was to improve times on flat sections in slalom, and we defined four strategies intentionally to enhance this skill (\ref{fig:courseandstrategies}b). Our hypothesis was that skiers in the reinforcement learning group would learn to choose better strategies and thus achieve better performance than skiers subject to traditional supervised learning with a coach. To test this, we assigned skiers to three different learning groups with different instructions and feedback (Fig. \ref{fig:experiment}b): In the reinforcement learning group, skiers chose a strategy on every run and saw their race times to inform these decisions. In the supervised (free choice) learning group, a ski coach made this choice for the skier, while in the supervised (target skill) learning group, we recruited current World-Cup ski coaches to instruct skiers to select the strategy that we defined as the theoretically best strategy based on computational modeling \cite{lind_physics_2013} and observations of elite skiers \cite{reid_alpine_2020}. Coaches in the two supervised learning groups saw the times but were instructed not to disclose them to the skiers. 
 
@@ -79,7 +79,86 @@ We found that the reinforcement learning group showed greater improvement during
 \end{figure}
 
 \section{Results}
-After completing four trials in the main slalom course (Fig. \ref{:courseandstrategies}a) during the baseline test, where skiers skied the course as quickly as possible without instructions or feedback, they were allocated into three groups using a randomized-blocked approach to adjust for any preexisting differences in the skiers' performance levels \cite{maxwell_designing_2017}. In their allocated groups, skiers were introduced to the defined strategies with a coach, followed by a familiarization phase where skiers tried to ensure that they understood them and were able to execute them. The next phase involved a 'forced exploration' session in which skiers tested the four strategies twice each, with the order randomly determined for each skier under the condition that the first and last four trials tested comprised all four strategies. This provided insight into the effectiveness of the strategies. After forced exploration, skiers completed two free-choice sessions where the coach (supervised learning) or the skier (reinforcement learning) chose the strategy for each trial. On the final day, skiers completed four trials in the main course followed by four rounds in a transfer course without timing or feedback from a coach. After each session during acquisition (including familiarization), both coaches and skiers ranked the strategies based on their performance. During retention and transfer, only the skiers ranked the strategies.
+Ninety-eight skilled and elite alpine ski racers from Norway and Sweden (age M = 18.1 years, SD= 2; 40 females, 58 males) participated in the learning experiment. After completing four trials in the main slalom course (Fig. \ref{:courseandstrategies}a) during the baseline test, where skiers skied the course as quickly as possible without instructions or feedback, they were allocated into three groups using a randomized-blocked approach to adjust for any preexisting differences in the skiers' performance levels \cite{maxwell_designing_2017}. In their allocated groups, skiers were introduced to the defined strategies with a coach, followed by a familiarization phase where skiers tried to ensure that they understood them and were able to execute them. The next phase involved a 'forced exploration' session in which skiers tested the four strategies twice each, with the order randomly determined for each skier under the condition that the first and last four trials tested comprised all four strategies. This provided insight into the effectiveness of the strategies. After forced exploration, skiers completed two free-choice sessions where the coach (supervised learning) or the skier (reinforcement learning) chose the strategy for each trial. On the final day, skiers completed four trials in the main course followed by four rounds in a transfer course without timing or feedback from a coach. After each session during acquisition (including familiarization), both coaches and skiers ranked the strategies based on their performance. During retention and transfer, only the skiers ranked the strategies.
+
+
+
+
+\begin{sidewaystable}
+\caption{\textbf{Skier characteristics}}
+\centering
+\begin{tabular}[H]{l|c|c|c|c|c|c}
+\hline
+\multicolumn{1}{c|}{ } & \multicolumn{2}{c|}{\textbf{Reinforcement learning}} & \multicolumn{2}{c|}{\textbf{Supervised (free choice)}} & \multicolumn{2}{c}{\textbf{Supervised (target skill)}} \\
+\textbf{Sex} & \textbf{F}, N = 13 & \textbf{M}, N = 19 & \textbf{F}, N = 14 & \textbf{M}, N = 19 & \textbf{F}, N = 13 & \textbf{M}, N = 20\\
+\hline
+Age & 18.4 (2.3) & 17.7 (1.8) & 18.1 (2.3) & 18.3 (1.8) & 17.8 (2.4) & 18.2 (2.1)\\
+\hline
+Training group &  &  &  &  &  & \\
+\hline
+\hspace{1em}National team & 1 (7.7\%) & 1 (5.3\%) & 2 (14\%) & 1 (5.3\%) & 2 (15\%) & 4 (20\%)\\
+\hline
+\hspace{1em}Senior team & 3 (23\%) & 5 (26\%) & 1 (7.1\%) & 5 (26\%) & 0 (0\%) & 5 (25\%)\\
+\hline
+\hspace{1em}Ski academy & 9 (69\%) & 13 (68\%) & 11 (79\%) & 13 (68\%) & 11 (85\%) & 11 (55\%)\\
+\hline
+FIS points &  &  &  &  &  & \\
+\hline
+\hspace{1em}Median (IQR) & 54 (42, 80) & 46 (34, 90) & 58 (26, 80) & 44 (35, 61) & 49 (28, 66) & 31 (28, 63)\\
+\hline
+\hspace{1em}Not recorded & 3 & 2 & 1 & 2 & 2 & \vphantom{1} 3\\
+\hline
+World ranking &  &  &  &  &  & \\
+\hline
+\hspace{1em}Median (IQR) & 630 (394, 1,217) & 707 (364, 2,317) & 709 (133, 1,224) & 662 (387, 1,274) & 527 (145, 882) & 314 (220, 1,360)\\
+\hline
+\hspace{1em}Not recorded & 3 & 2 & 1 & 2 & 2 & 3\\
+\hline
+\multicolumn{7}{l}{\rule{0pt}{1em}\textsuperscript{1} Mean (SD); n (\%)}\\
+\end{tabular}
+\end{sidewaystable}
+
+
+\begin{sidewaystable}
+\caption{\textbf{Coach characteristics}}
+\centering
+\begin{tabular}[H]{l|c|c|c}
+\hline
+\multicolumn{1}{c|}{ } & \multicolumn{2}{c|}{\textbf{Supervised (free choice)}} & \multicolumn{1}{c}{\textbf{Supervised (target skill)}} \\
+\textbf{Characteristic} & \textbf{F}, N = 2 & \textbf{M}, N = 6 & \textbf{M}, N = 3\\
+\hline
+Age & 38.5 (3.5) & 44.3 (8.8) & 48.0 (7.0)\\
+\hline
+Ski education (highest achieved) &  &  & \\
+\hline
+\hspace{1em}Level 2 & 0 (0\%) & 1 (17\%) & \\
+\hline
+\hspace{1em}Level 3/4 & 2 (100\%) & 5 (83\%) & 3 (100\%)\\
+\hline
+Sport science degree (highest achieved) &  &  & \\
+\hline
+\hspace{1em}MSc & 1 (50\%) & 0 (0\%) & 1 (33\%)\\
+\hline
+\hspace{1em}BSc & 1 (50\%) & 1 (17\%) & 1 (33\%)\\
+\hline
+\hspace{1em}No & 0 (0\%) & 4 (67\%) & \\
+\hline
+\hspace{1em}One-year program & 0 (0\%) & 1 (17\%) & 1 (33\%)\\
+\hline
+Coaching experience (years) &  &  & \\
+\hline
+\hspace{1em}National team (WC/EC)/Senior teams & 5.00 (1.41) & 5.00 (4.24) & 15.67 (1.15)\\
+\hline
+\hspace{1em}Ski academy & 7.5 (3.5) & 7.5 (6.5) & 2.00 (3.46)\\
+\hline
+\hspace{1em}Ski club & 2.5 (3.5) & 6.5 (8.7) & 6.0 (6.6)\\
+\hline
+\multicolumn{4}{l}{\rule{0pt}{1em}\textsuperscript{1} Mean (SD); n (\%)}\\
+\end{tabular}
+\end{sidewaystable} 
+
+
+
 
 \subsection{Greater improvement during acquisition with reinforcement learning than supervised (free choice) learning}\label{result_racetime_acquisition}
 We anticipated that the three treatment groups would show distinct improvements in race times during acquisition. Specifically, our hypothesis posited that reinforcement learning would yield greater race time improvements, driven by the acquisition of superior strategies through evaluations rather than instructions. Figure \ref{fig: racetime}a presents mean racing time estimates for treatment groups during acquisition.
@@ -219,7 +298,7 @@ Our hypothesis was also that reinforcement learning improves transfer to a new s
 
 Our initial explanation for the improved acquisition and retention in the reinforcement learning group was that they learned to choose better strategies through evaluation via choice. During acquisition, we found that reinforcement learning enhanced its choices, while we did not observe the same evidence for supervised (free choice) learning. Both groups exhibited a 'win-stay, lose-switch' signature, indicating a tendency to stick to successful strategies. Despite reinforcement learning showing a descriptive tendency to select better strategies and having more pronounced "win-stay, lose-switch" tendencies during acquisition, these differences were not statistically significant, contrary to our initial hypothesis. 
 
-Similar 'win-stay, lose-switch' tendencies have been found in other motor learning studies. The finding of 'win-stay, lose-switch' in our study suggests that elite sportspeople seek effective strategies. One plausible explanation for not finding corroborating evidence for group differences in choice or on 'win-stay, lose-switch' is that we were dealing with highly experienced coaches with solid sports knowledge. Therefore, we should be cautious in describing this as a null result. It is also important to note that coaches had access to skiers' race times and underwent significant learning too. In a typical training situation, coaches might not have tested strategies as extensively as in this study.  
+Similar 'win-stay, lose-switch' tendencies have been found in other motor learning studies \cite{taylor_flexible_2011}. The finding of 'win-stay, lose-switch' in our study suggests that elite sportspeople seek effective strategies. One plausible explanation for not finding corroborating evidence for group differences in choice or on 'win-stay, lose-switch' is that we were dealing with highly experienced coaches with solid sports knowledge. Therefore, we should be cautious in describing this as a null result. It is also important to note that coaches had access to skiers' race times and underwent significant learning too. In a typical training situation, coaches might not have tested strategies as extensively as in this study.  
 
 A surprising finding was that supervised (free choice) learning had a descriptively higher predicted probability of choosing the skier's estimated best strategy on retention. Still, the reinforcement learning had the fastest race times during retention. One interpretation of this result is that skiers in the reinforcement learning group took into consideration the variability of performing a strategy and opted for those with lower incurred risk, despite another strategy being more effective. This understanding may have arisen because skiers in the reinforcement learning group discovered that multiple strategies led to similar outcomes and chose the slightly worse strategy due to lower variability. In that case, one might consider that "extend with rock skis forward" to be more risky since it could potentially make athletes lean too far backward to be able to engage the skis in the next turn. However, this does not seem to be a good account of our data as the choices of this strategy increased on retention. A more likely explanation is that that the skiers in reinforcement learning built a better mental representation of the strategies and learned that two or more produced the same outcomes, and just picked any of them.
 
@@ -232,14 +311,94 @@ Et interessant funn i studien var at
 
 Our study suggests that reinforcement learning can be an essential training strategy to improve skill acquisition. However, before encouraging coaches and instructors to implement this strategy, we discuss the significance of the effect size and its amplifying and counteracting mechanisms for generalizability \cite{anvari_not_2023}. To start this discussion, we emphasize that the estimated effect size during retention was smaller than our predefined smallest effect size of interest. This benchmark, however, was set for a longer slalom course and more training sessions than we could execute due to space and time constraints in the ski hall. Consequently, we exercise caution in outright dismissing its practical significance. Instead, we aim to help the reader understand its potential importance for skill improvement in our sample of skiers. The first step towards this insight is to consider that the slalom course approximately equaled one-third of a full slalom race course, and a slalom race consists of two runs. Therefore, the 0.12 seconds effect size could be scaled up by a factor of 6, potentially proving significant for coaches in a more accurate course setup. However, racecourses consisting solely of flat sections are rare, and it is more realistic to assume that a flat section of a course constitutes only one-third of the entire course. If we base our understanding on this assumption, we can convert the 0.12-second difference into FIS world ranking positions. Considering that a race consists of two runs, this translates into an improved World Rank of 27 positions for females and 65 for males, based on a median ranking of 600 in our sample (see Supplement discussion). This could be of significant importance, but we have to remember that this effect cannot be directly transferred, as sports expertise also involves cognitive decisions \cite{mangalam_investigating_2023, krakauer_motor_2019}, such as switching from one strategy to another during a race. Our study did not capture such decisions as we focused on flat sections. In conclusion, the estimated effect could be larger if not because reinforcement learning and supervised learning conducted the retention and transfer tests simultaneously. This design choice allowed the skiers to observe each other, possibly diluting some of the effect. However, this decision was made to mirror the conditions of alpine competitions and gave us confidence that athletes experienced similar conditions during testing. 
 
+The insights learned from our study suggest important implications for coaches when designing training sessions to improve skills. Based on our findings, coaches are advised to formulate strategies tailored to their respective sports and to aid learners in impartially evaluating these strategies. This pedagogical approach aligns with previous recommendations emphasizing the importance of fostering learners' cognitive representations to develop innovative solutions rather than merely imparting knowledge from a coach. These strategies may start out broadly for young athletes but should progressively become more focused as athletes advance in expertise. It is essential to clarify that we do not propose replacing traditional teaching methods with this approach but suggest integrating it as a supplementary tool to augment decision-making training.
+
+Before coaches embrace our recommendation to incorporate more strategy evaluation into their coaching practices, it is important to consider the practical significance of the effect size and its potential amplifying and counteracting mechanisms. One important note is that the estimated effect size during retention was smaller than our predefined smallest effect size of interest. This benchmark, however, was set for a longer slalom course and more training sessions than we could execute due to space and time constraints in the ski hall. Consequently, we exercise caution in outright dismissing its practical significance. Our estimated effect size might be meaningful, however, if we consider that our slalom course approximately equaled one-third of a full slalom race course, and that a slalom race consists of two runs. Therefore, the 0.12 seconds effect size could be scaled up by a factor of 6 but it more realistic to assume that flat sections of a course only one-third of the entire course. If we base our understanding 
+on this assumption, the 0.12-second difference translates into an improved FIS world ranking of 27 positions for females and 65 for males, based on a median ranking of 600 in our sample (see Supplement discussion). This effect could be important for the coaches, but we have to remember that sports expertise involves cognitive decisions \cite{mangalam_investigating_2023, krakauer_motor_2019}, such as switching from one strategy to another during a race. Our study did not capture such decisions as we focused on flat sections. Finally, the estimated effect could have been larger if not because reinforcement learning and supervised learning conducted the retention and transfer tests simultaneously. This design choice allowed the skiers to observe each other, possibly diluting some of the effect. However, this decision was made to mirror the conditions of alpine competitions and gave us confidence that athletes experienced similar conditions during testing. 
+
+
+to remember that this effect cannot be directly transferred, as sports expertise also involves cognitive decisions \cite{mangalam_investigating_2023, krakauer_motor_2019}, such as switching from one strategy to another during a race.
+
+
+an improved World Rank of 27 positions for females and 65 for males, based on a median ranking of 600 in our sample (see Supplement discussion)
+
+
+
+. Considering that a race consists of two runs, this translates into an improved World Rank of 27 positions for females and 65 for males, based on a median ranking of 600 in our sample (see Supplement discussion)
+
+
+
+
+However, racecourses consisting solely of flat sections are rare, and it is more realistic to assume that a flat section of a course constitutes only one-third of the entire course.
+
+.
+
+
+
+
+
+we aim to help the reader understand its potential importance for skill improvement in our sample of skiers. The first step towards this insight is to consider that the slalom course approximately equaled one-third of a full slalom race course, and a slalom race consists of two runs. Therefore, the 0.12 seconds effect size could be s
+
+
+
+The first step towards this insight is to consider that the slalom course approximately equaled one-third of a full slalom race course, and a slalom race consists of two runs. Therefore, the 0.12 seconds effect size could be scaled up by a factor of 6, potentially proving significant for coaches in a more accurate course setup. However, racecourses consisting solely of flat sections are rare, and it is more realistic to assume that a flat section of a course constitutes only one-third of the entire course. If we base our understanding on this assumption, we can convert the 0.12-second difference into FIS world ranking positions. Considering that a race consists of two runs, this translates into an improved World Rank of 27 positions for females and 65 for males, based on a median ranking of 600 in our sample (see Supplement discussion). This could be of significant importance, but we have to remember that this effect cannot be directly transferred, as sports expertise also involves cognitive decisions \cite{mangalam_investigating_2023, krakauer_motor_2019}, such as switching from one strategy to another during a race.
+
+
+
+
+
+
+
+
+, we emphasize that the estimated effect size during retention was smaller than our predefined smallest effect size of interest. This benchmark, however, was set for a longer slalom course and more training sessions than we could execute due to space and time constraints in the ski hall. Consequently, we exercise caution in outright dismissing its practical significance.
+
+
+
+its mechanisms for amplification and counteraction regarding generalizability 
+
+Før trenere "internaliseres" denne anbefalingen er det viktig å betrakte effektstørrelsen praktiske betydning og dens amplifying og counteracting mechanismer for generalizability.
+
+Det er likevel viktig å betrakte størrelsen på effektstørrelsen og deres amplifying og counteracting mechanismer
+
+Et sentralt perspektiv å ha med i seg i denne vurderingen er 
+
+Et essensielt aspekt å ta hensyn til i denne vurderingen er 
+
+significance of the effect size and its amplifying and counteracting mechanisms for generalizability \cite{anvari_not_2023}. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+that coaches can develop strategies in their sport and allow athletes to evaluate them with the help of objective information. This instructional strategy aligns with previous recommendations that expertise development should aim to stimulate athletes' cognitive representation of the task, fostering their capacity to generate new and innovative solutions rather than being passive recipients of coaches' knowledge.
+
+Our results suggest s implications for coaches in designing training sessions for athletes. 
+
+ 
+
+
+coaches' training structure, indicating potential benefits from applying reinforcement learning principles for athletes to evaluate various approaches. 
+
+The results suggest important implications for how coaches structure training for athletes. Our findings suggest that coaches could benefit from applying reinforcement learning principles to help athletes evaluate the effectiveness of different approaches. 
+
+
+
+
 Studien har viktige implikasjoner på hvordan trenere legger opp trening for utøvere. Ofte legges slik trening opp et supervised learning prinsipper, der treneren formidler hvordan en oppgave skal utføres. Vår studie viser at trenere kan gjøre det lurt i å bruke reinforcement learning prinsipper for å hjelpe utøvere til å evaluere hva som virker og ikke virker. Dette kan gjøres ved å lage strategier som kan forbedre ferdighetene til utøverne og la utøverne få teste de ut. En slik anbefaling er også i tråd med tidligere gitte anbefalinger der man tenker at en del av treningen for å utvikle ekspertise går for å stimulere utøvernes kognitive representasjon av ferdighet slik at man utvikler deres forståelse av kompleksisten.  that allow them to critize their skill. Fremtidige studier bør undersøke dette videre. I alpint kan dette gjøres ved å definere strategier som linjevalg for å oppnå best læring.
 
-In conclusion, our data showed that reinforcement learning improved more during acquisition and performed better at retention that supervised (free choice) learning. The best explanation for this result was better understanding of the skills as well as better performance of the some strategies themselves. In contrast, we did not find evidence that the supervised (target skill) learning improved more.
+In conclusion, our data showed that reinforcement learning improved more during acquisition and performed better at retention that supervised (free choice) learning. The best explanation for this result was better understanding of the skills as well as better performance of the some strategies themselves. In contrast, we did not find evidence that the supervised (target skill) learning improved more. Yet always picking the correct strategy comes as it own costs; the learner may not dissociate strategies which might prevent them from other learning. 
 
 
-
-
-
+\subsection{Limitation of the study}
 
 
 
@@ -378,81 +537,6 @@ We recruited ten alpine ski teams from Norway and Sweden comprising 98 alpine sk
 Conducting studies on alpine ski racing poses challenges related to environmental control and resource constraints. Our sample size approach involved recruiting as many skiers as possible during the summer of 2023, with a set minimum sample size of 80 skiers, which we deemed appropriate for this context. Prior to data collection, data and power simulations for sample sizes of 80, 100, and 120 skiers were conducted, revealing simulated powers of 0.60, 0.75, and 0.80, respectively, for the smallest effect size of interest (0.3 second difference between groups) (\url{https://osf.io/c4t28}). The smallest effect size of interest was based on our knowledge of alpine skiing and discussions with coaches, but it was intended for a 50-meter longer course and more training sessions than we ultimately ended up using due to practical considerations. The sample size justification, task design, and analysis plan were preregistered before data collection (\url{https://osf.io/tfb2w}).
 
 Due to space and time constraints in the ski hall, it was not possible to test all the ski teams simultaneously. The 10 ski teams were therefore divided into 4 groups for which the study was conducted at different times. For each group that participated in the study, we recruited two coaches from the ski teams to serve as coaches in the supervised (free choice) learning group, totaling 8 coaches (2 women; 6 men). These coaches had extensive coaching experience in coaching alpine ski racers. In addition, for each group of ski teams that completed the experiment together, we recruited a third coach to coach the skiers in supervised (target skill) learning. To ensure that these coaches had sufficient credibility to make the skiers buy into our theoretical best strategy, we selectively recruited three highly experienced coaches from the Norwegian alpine ski team, with one coach serving twice due to illness of the fourth coach. Importantly, all the coaches remained unaware of the experimental manipulation. Table 2 provides demographic information of the coaches. All the skiers and coaches provided informed consent before the study. The study was approved by the Human Research Ethics Committee of The Norwegian School of Sport Sciences.
-
-
-
-\begin{sidewaystable}
-\caption{\textbf{Skier characteristics}}
-\centering
-\begin{tabular}[t]{l|c|c|c|c|c|c}
-\hline
-\multicolumn{1}{c|}{ } & \multicolumn{2}{c|}{\textbf{Reinforcement learning}} & \multicolumn{2}{c|}{\textbf{Supervised (free choice)}} & \multicolumn{2}{c}{\textbf{Supervised (target skill)}} \\
-\textbf{Sex} & \textbf{F}, N = 13 & \textbf{M}, N = 19 & \textbf{F}, N = 14 & \textbf{M}, N = 19 & \textbf{F}, N = 13 & \textbf{M}, N = 20\\
-\hline
-Age & 18.4 (2.3) & 17.7 (1.8) & 18.1 (2.3) & 18.3 (1.8) & 17.8 (2.4) & 18.2 (2.1)\\
-\hline
-Training group &  &  &  &  &  & \\
-\hline
-\hspace{1em}National team & 1 (7.7\%) & 1 (5.3\%) & 2 (14\%) & 1 (5.3\%) & 2 (15\%) & 4 (20\%)\\
-\hline
-\hspace{1em}Senior team & 3 (23\%) & 5 (26\%) & 1 (7.1\%) & 5 (26\%) & 0 (0\%) & 5 (25\%)\\
-\hline
-\hspace{1em}Ski academy & 9 (69\%) & 13 (68\%) & 11 (79\%) & 13 (68\%) & 11 (85\%) & 11 (55\%)\\
-\hline
-FIS points &  &  &  &  &  & \\
-\hline
-\hspace{1em}Median (IQR) & 54 (42, 80) & 46 (34, 90) & 58 (26, 80) & 44 (35, 61) & 49 (28, 66) & 31 (28, 63)\\
-\hline
-\hspace{1em}Not recorded & 3 & 2 & 1 & 2 & 2 & \vphantom{1} 3\\
-\hline
-World ranking &  &  &  &  &  & \\
-\hline
-\hspace{1em}Median (IQR) & 630 (394, 1,217) & 707 (364, 2,317) & 709 (133, 1,224) & 662 (387, 1,274) & 527 (145, 882) & 314 (220, 1,360)\\
-\hline
-\hspace{1em}Not recorded & 3 & 2 & 1 & 2 & 2 & 3\\
-\hline
-\multicolumn{7}{l}{\rule{0pt}{1em}\textsuperscript{1} Mean (SD); n (\%)}\\
-\end{tabular}
-\end{sidewaystable}
-
-
-\begin{sidewaystable}
-\caption{\textbf{Coach characteristics}}
-\centering
-\begin{tabular}[t]{l|c|c|c}
-\hline
-\multicolumn{1}{c|}{ } & \multicolumn{2}{c|}{\textbf{Supervised (free choice)}} & \multicolumn{1}{c}{\textbf{Supervised (target skill)}} \\
-\textbf{Characteristic} & \textbf{F}, N = 2 & \textbf{M}, N = 6 & \textbf{M}, N = 3\\
-\hline
-Age & 38.5 (3.5) & 44.3 (8.8) & 48.0 (7.0)\\
-\hline
-Ski education (highest achieved) &  &  & \\
-\hline
-\hspace{1em}Level 2 & 0 (0\%) & 1 (17\%) & \\
-\hline
-\hspace{1em}Level 3/4 & 2 (100\%) & 5 (83\%) & 3 (100\%)\\
-\hline
-Sport science degree (highest achieved) &  &  & \\
-\hline
-\hspace{1em}MSc & 1 (50\%) & 0 (0\%) & 1 (33\%)\\
-\hline
-\hspace{1em}BSc & 1 (50\%) & 1 (17\%) & 1 (33\%)\\
-\hline
-\hspace{1em}No & 0 (0\%) & 4 (67\%) & \\
-\hline
-\hspace{1em}One-year program & 0 (0\%) & 1 (17\%) & 1 (33\%)\\
-\hline
-Coaching experience (years) &  &  & \\
-\hline
-\hspace{1em}National team (WC/EC)/Senior teams & 5.00 (1.41) & 5.00 (4.24) & 15.67 (1.15)\\
-\hline
-\hspace{1em}Ski academy & 7.5 (3.5) & 7.5 (6.5) & 2.00 (3.46)\\
-\hline
-\hspace{1em}Ski club & 2.5 (3.5) & 6.5 (8.7) & 6.0 (6.6)\\
-\hline
-\multicolumn{4}{l}{\rule{0pt}{1em}\textsuperscript{1} Mean (SD); n (\%)}\\
-\end{tabular}
-\end{sidewaystable} 
 
 
 \subsection{The setup}
