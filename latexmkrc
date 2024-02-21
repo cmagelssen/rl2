@@ -1,1 +1,0 @@
-$bibtex = 'citeproc-lua';
